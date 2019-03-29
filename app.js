@@ -12,11 +12,10 @@ app.get("/", function(req, res){
 });
 
 var article = [
-    {title:"newsA",author:"sam",content:"this is the news zzgdf gszfibskjjgzsfb lorem ipsum" ,category:"genral",fc :0}
-    ,{title:"newsB",author:"sam",content:"this is the news zzgdf gszfibskjjgzsfb lorem ipsum" ,category:"genral",fc :0}
-    ,{title:"newsC",author:"sam",content:"this is the news zzgdf gszfibskjjgzsfb lorem ipsum" ,category:"genral",fc :0}
+    {title:"How BJP beats Congress",author :"Chetan Kumar",  content:"Much of BJP's dominance in electoral politics in the past " ,category:"politics",fc :0}
+    ,{title:"No BCCI curators at top three IPL venues",author:"sam",content:"The Chepauk pitch was criticised after it took prodigiou .." ,category:"sports",fc :0}
+    ,{title:"Google Pay looks for expansion", author:"Chetan Kumar",content:"Google’s renewed push comes at a time when rivals Phonepe an .. " ,category:"general",fc :0}
 ]
-
 
 app.get("/news", function(req, res){
     var data=article;
@@ -24,6 +23,28 @@ app.get("/news", function(req, res){
      
 
 });
+
+
+app.get("/news/:cat", function(req, res){
+    
+    
+    var data=article;
+    var data1=[];
+    console.log(req.params.cat);
+    data.forEach(function(arti){
+        // console.log(arti.category);
+        if(arti["category"] ==  req.params['cat']){
+            // console.log(arti);
+        data1.push(arti);}
+
+    });
+    
+    res.render("news",{data : data1});
+     
+    
+});
+
+
 
 app.get("/newpost", function(req, res){
     res.render("newpost1.ejs"); 

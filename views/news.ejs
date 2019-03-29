@@ -12,7 +12,63 @@
 	
 	 
 
-	<link rel="stylesheet" type="text/css" href="home.css">
+   <style>
+   *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.jumbotron{
+    text-align: center;
+    padding: 50px;
+    margin: 10px;
+}
+ 
+
+ .card-container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+     justify-content: space-around;
+}
+
+.card{
+  flex-basis: 250px;
+  max-width: 300px; 
+  margin: 10px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    background-color: white;
+  display: flex;
+  flex-direction: column;  
+  transition: all 0.3s;    
+}
+
+
+.card:hover{
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.2);
+    background-color: darkgray;
+}
+
+.card-title{
+  color: darkcyan;
+    font-weight: 900;
+    font-family: cursive;
+}
+
+  
+.card ,card-title{
+    padding: 10px;
+}
+
+.card .card-des{
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: 10px;
+
+}
+   
+   </style>
 </head>
 <body>
     
@@ -67,11 +123,15 @@ align-items: space-around;
     
     <div class="card" style="width: 38rem;">
   <div class="card-body">
-    <h5 class="card-title"> <%= article["title"] %> </h5>
+    <h5 class="card-title"><a href ="https://timesofindia.indiatimes.com/elections/news/lok-sabha-elections-how-bjp-beats-congress-in-turning-votes-into-seats/articleshow/68623108.cms" target="_blank"> <%= article["title"] %></a> </h5>
     <h6 class="card-subtitle mb-2 text-muted"> <%=article["author"]%></h6>
     <p class="card-text">   <%=article["content"]%></p>
        <form  action="/fakevote/<%= article["title"] %>", method="POST">
-            <input type="submit" class = "card-link" name="fakevote" value="Upvote" placeholder="flag as fake"/><span> <%= article["fc"] %></span>
+        <input type="submit" class = "card-link" name="fakevote" value="Flag As Fake" placeholder="flag as fake" style="background-color:tomato; color:white; border: 1px solid black; height: 30px; width: 140px; font-size:20px;"/>
+        <br>
+        <br>
+        
+        <div style="height:30px; width:300px;   color: orange; font-size: 15px;">  <%= article["fc"] %><span>: Users flagged this is fake</span></div> 
              </form>
   </div>
 </div>
